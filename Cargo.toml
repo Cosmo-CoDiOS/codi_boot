@@ -17,6 +17,18 @@ features = ["stm32l4x6", "rt"]
 version = "1.3.1"
 features = ["l4x6", "embedded-hal"]
 
+[dependencies.codi_os_proto]
+git = "https://github.com/Cosmo-CoDiOS/codi_protos"
+rev = "21960d226985d66d9f2dd97f39628fdb44181a4c"
+
+[dependencies.codi_proto_common]
+git = "https://github.com/Cosmo-CoDiOS/codi_protos"
+rev = "21960d226985d66d9f2dd97f39628fdb44181a4c"
+
+[dependencies.codi_stock_proto]
+git = "https://github.com/Cosmo-CoDiOS/codi_protos"
+rev = "21960d226985d66d9f2dd97f39628fdb44181a4c"
+
 [profile.dev]
 lto = true
 opt-level = 'z'
