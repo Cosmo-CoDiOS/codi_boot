@@ -99,7 +99,7 @@ dependencies = [
 [[package]]
 name = "codi_os_proto"
 version = "0.1.0"
-source = "git+https://github.com/Cosmo-CoDiOS/codi_protos?rev=21960d226985d66d9f2dd97f39628fdb44181a4c#21960d226985d66d9f2dd97f39628fdb44181a4c"
+source = "git+https://github.com/Cosmo-CoDiOS/codi_protos?rev=9cc8294fc6b35c88620c6ac331da05bc5ea56d77#9cc8294fc6b35c88620c6ac331da05bc5ea56d77"
 dependencies = [
  "prost",
  "prost-build",
