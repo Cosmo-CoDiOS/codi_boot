@@ -3,6 +3,14 @@ name = "codi_bootload"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+name = "codi_bootload"
+path = "src/lib.rs"
+
+[[bin]]
+name = "codi-bootload"
+path = "src/bin/codi_bootload.rs"
+
 [dependencies]
 cortex-m = "0.7.3"
 cortex-m-rt = "0.7.0"
