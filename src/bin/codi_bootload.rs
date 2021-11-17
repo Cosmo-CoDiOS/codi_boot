@@ -1,3 +1,4 @@
+#![allow(unsafe_code)]
 #![no_std]
 #![no_main]
 
@@ -9,3 +10,5 @@ use panic_halt as _;
 // only use in prod/release - i.e, end-user CoDi units
 #[cfg(not(debug_assertions))]
 use panic_abort as _;
+
+// setup serial comms._
