@@ -28,6 +28,7 @@ branch = "main"
 [dependencies.codi_proto_common]
 git = "https://github.com/Cosmo-CoDiOS/codi_protos"
 branch = "main"
+features = ["runs-on-stm32"]
 
 [dependencies.codi_stock_proto]
 git = "https://github.com/Cosmo-CoDiOS/codi_protos"
