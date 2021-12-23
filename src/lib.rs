@@ -28,3 +28,18 @@ pub mod consts {
     pub const BOOTLOADER_END: u32 = 0x08080000;
 }
 
+// derived from https://github.com/karthickai/rustboot/blob/master/src/main.rs
+// thanks
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Error {
+    Success,
+    InvalidAddr,
+    PayloadTooLong,
+    PayloadLengthErr,
+    EraseErr,
+    WriteErr,
+    FlashErr,
+    InternalErr
+}
+
