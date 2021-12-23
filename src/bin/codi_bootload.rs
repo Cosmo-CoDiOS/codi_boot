@@ -11,4 +11,5 @@ use panic_halt as _;
 #[cfg(not(debug_assertions))]
 use panic_abort as _;
 
-// setup serial comms._
+// setup serial comms.
+
