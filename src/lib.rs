@@ -15,6 +15,7 @@
     variant_size_differences
 )]
 #![allow(unsafe_code)]
+#![allow(dead_code)]
 #![no_std]
 
 pub mod consts {
