@@ -16,4 +16,13 @@
 #![allow(unsafe_code)]
 #![no_std]
 
-mod consts;
+pub mod consts {
+    //! This module defines constants for various areas of the bootloader.
+   
+    /// Where the bootloader starts on the STM32 chip.
+    pub const BOOTLOADER_START: u32 = 0x08000000;
+
+    /// Where the bootloader ends on the STM32 chip.
+    pub const BOOTLOADER_END: u32 = 0x08080000;
+}
+
