@@ -13,7 +13,7 @@ path = "src/bin/codi_bootload.rs"
 
 [dependencies]
 cortex-m = "0.7.3"
-cortex-m-rt = "0.7.0"
+cortex-m-rt = "0.7.1"
 panic-halt = "0.2.0"
 panic-abort = "0.3.2"
 
