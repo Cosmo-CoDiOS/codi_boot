@@ -45,4 +45,4 @@ jobs:
         with:
             files: /home/runner/work/codi_bootload/target/thumbv7em-none-eabihf/release/codi_bootload
         env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
