@@ -1,0 +1,39 @@
+name: codi_bootload CI debug builder
+'on':
+  - push
+  - pull_request
+env:
+  CARGO_TERM_COLOR: always
+jobs:
+  build-debug:
+    name: Debug builder for CoDi bootloader (new)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Cargo binary caching/installation action
+        uses: actions-rs/install@v0.1
+        with:
+          crate: cross
+          version: latest
+          use-tool-cache: true
+      - name: Setup Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          default: true
+          override: true
+          target: thumbv7em-none-eabihf
+          profile: minimal
+      - name: Build project (armv7) in debug mode
+        uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: >-
+            --all --locked --verbose --target=thumbv7em-none-eabihf
+          use-cross: true
+      - name: Upload [debug] artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: 'codi_bootload-debug'
+          path: /home/runner/work/codi_bootload/codi_bootload/target/thumbv7em-none-eabihf/debug/codi_bootload
