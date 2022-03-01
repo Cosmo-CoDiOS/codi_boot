@@ -1,5 +1,6 @@
 //! This crate houses a new and improved bootloader for CoDi's bootloader.
 #![deny(
+    warnings,
     missing_copy_implementations,
     missing_debug_implementations,
     missing_docs,
@@ -31,6 +32,7 @@ pub mod consts {
 // derived from https://github.com/karthickai/rustboot/blob/master/src/main.rs
 // thanks
 
+/// Errors defined in base crate for bootload.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Error {
     Success,
