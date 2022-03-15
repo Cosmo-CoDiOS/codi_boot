@@ -12,4 +12,3 @@ use panic_halt as _;
 use panic_abort as _;
 
 // setup serial comms.
-

@@ -21,7 +21,7 @@
 
 pub mod consts {
     //! This module defines constants for various areas of the bootloader.
-   
+
     /// Where the bootloader starts on the STM32 chip.
     pub const BOOTLOADER_START: u32 = 0x08000000;
 
@@ -42,6 +42,5 @@ pub enum Error {
     EraseErr,
     WriteErr,
     FlashErr,
-    InternalErr
+    InternalErr,
 }
-
