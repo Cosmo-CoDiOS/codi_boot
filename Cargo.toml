@@ -22,15 +22,31 @@ git = "https://github.com/stm32-rs/stm32l4xx-hal"
 rev = "f93b5052b5c9470b153e8cc524bfa6627cc39b8f"
 features = ["stm32l4r9"]
 
-[dependencies.codi_bootload_proto]
+[dependencies.codi_bootload_protocol]
 git = "https://github.com/Cosmo-CoDiOS/codi_protos"
 branch = "main"
 
-[dependencies.codi_proto_common]
+[dependencies.codi_protocol_common]
 git = "https://github.com/Cosmo-CoDiOS/codi_protos"
 branch = "main"
-features = ["runs-on-stm32"]
+features = ["stm32"]
 default-features = false
+
+[profile.dev]
+opt-level = 's'
+codegen-units = 1
+lto = true
+debug = true
+strip = true
+panic = "abort"
+incremental = false
+
+[profile.dev.package."*"]
+opt-level = 's'
+codegen-units = 1
+strip = true
+incremental = false
+debug = true
 
 [profile.release]
 opt-level = 's'
