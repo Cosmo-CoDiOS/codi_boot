@@ -16,6 +16,7 @@ cortex-m = "0.7.5"
 cortex-m-rt = "0.7.1"
 panic-abort = "0.3.2"
 panic-halt = "0.2.0"
+core2 = { version = "*", default-features = false }
 
 [dependencies.stm32l4xx-hal]
 git = "https://github.com/stm32-rs/stm32l4xx-hal"
