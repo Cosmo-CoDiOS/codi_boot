@@ -1,4 +1,4 @@
-//! This crate houses a new and improved bootloader for CoDi's bootloader.
+//! This crate houses a new and improved bootloader for CoDi.
 #![deny(
     warnings,
     missing_copy_implementations,
