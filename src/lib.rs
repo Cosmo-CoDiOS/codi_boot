@@ -19,6 +19,11 @@
 #![allow(dead_code)]
 #![no_std]
 
+extern crate alloc;
+
+use core2::io;
+use alloc::boxed::Box;
+
 pub mod consts {
     //! This module defines constants for various areas of the bootloader.
 
@@ -33,14 +38,21 @@ pub mod consts {
 // thanks
 
 /// Errors defined in base crate for bootload.
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(Debug)]
+#[allow(missing_docs)]
 pub enum Error {
     Success,
-    InvalidAddr,
-    PayloadTooLong,
-    PayloadLengthErr,
+    InvalidAddr(u32),
+    PayloadTooLong(usize),
+    PayloadLengthErr(usize),
     EraseErr,
-    WriteErr,
+    WriteErr(Box<io::Error>),
     FlashErr,
     InternalErr,
+}
+
+impl From<io::Error> for Error {
+    fn from(e: io::Error) -> Self {
+        Self::WriteErr(Box::new(e))
+    }
 }
