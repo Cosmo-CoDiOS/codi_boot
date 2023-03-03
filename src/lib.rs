@@ -1,4 +1,4 @@
-//! This crate houses a new and improved bootloader for CoDi.
+//! This crate houses a new and improved bootloader for `CoDi`.
 #![deny(
     warnings,
     missing_copy_implementations,
@@ -28,10 +28,10 @@ pub mod consts {
     //! This module defines constants for various areas of the bootloader.
 
     /// Where the bootloader starts on the STM32 chip.
-    pub const BOOTLOADER_START: u32 = 0x08000000;
+    pub const BOOTLOADER_START: u32 = 0x0800_0000;
 
     /// Where the bootloader ends on the STM32 chip.
-    pub const BOOTLOADER_END: u32 = 0x08080000;
+    pub const BOOTLOADER_END: u32 = 0x0808_0000;
 }
 
 // derived from https://github.com/karthickai/rustboot/blob/master/src/main.rs
@@ -45,7 +45,7 @@ pub enum Error {
     InvalidAddr(u32),
     PayloadTooLong(usize),
     PayloadLengthErr(usize),
-    EraseErr,
+    EraseErr(Box<io::Error>),
     WriteErr(Box<io::Error>),
     FlashErr,
     InternalErr,
