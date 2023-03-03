@@ -13,5 +13,5 @@ use panic_abort as _;
 #[cfg_attr(target_arch = "arm", cortex_m_rt::entry)]
 #[cfg(target_arch = "arm")]
 fn main() -> ! {
-    loop { }
+    loop {}
 }

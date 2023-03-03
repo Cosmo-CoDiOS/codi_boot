@@ -21,8 +21,8 @@
 
 extern crate alloc;
 
-use core2::io;
 use alloc::boxed::Box;
+use core2::io;
 
 pub mod consts {
     //! This module defines constants for various areas of the bootloader.
