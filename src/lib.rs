@@ -1,4 +1,5 @@
 //! This crate houses a new and improved bootloader for `CoDi`.
+#![cfg_attr(target_arch = "arm", no_main, no_std)]
 #![deny(
     warnings,
     missing_copy_implementations,
@@ -9,20 +10,21 @@
     clippy::cargo,
     trivial_casts,
     trivial_numeric_casts,
-    unsafe_code,
     unused_import_braces,
     unused_qualifications,
     unused_extern_crates,
     variant_size_differences
 )]
-#![allow(unsafe_code)]
-#![allow(dead_code)]
-#![no_std]
+#![allow(unsafe_code, dead_code)]
 
-extern crate alloc;
+#[cfg(not(target_arch = "arm"))]
+compile_error!("We are not instructed to build for the STM32. Aborting build!");
 
-use alloc::boxed::Box;
 use core2::io;
+use thiserror_no_std::Error;
+use anyhow::Result;
+
+pub type CoDiBootError<T> = Result<T, Error>;
 
 pub mod consts {
     //! This module defines constants for various areas of the bootloader.
@@ -37,22 +39,21 @@ pub mod consts {
 // derived from https://github.com/karthickai/rustboot/blob/master/src/main.rs
 // thanks
 
-/// Errors defined in base crate for bootload.
-#[derive(Debug)]
+/// Errors defined in base crate for bootloader.
+#[derive(Debug, Default, Error)]
 #[allow(missing_docs)]
 pub enum Error {
-    Success,
-    InvalidAddr(u32),
-    PayloadTooLong(usize),
-    PayloadLengthErr(usize),
-    EraseErr(Box<io::Error>),
-    WriteErr(Box<io::Error>),
+    InvalidAddr {
+        mem_addr: i16,
+    },
+    PayloadLengthErr {
+        size: usize,
+        too_long: bool,
+        too_short: bool,
+    },
+    IoErr(#[from] io::Error),
     FlashErr,
     InternalErr,
-}
-
-impl From<io::Error> for Error {
-    fn from(e: io::Error) -> Self {
-        Self::WriteErr(Box::new(e))
-    }
+    #[default]
+    UnknownErr,
 }

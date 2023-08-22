@@ -9,13 +9,16 @@ path = "src/lib.rs"
 
 [[bin]]
 name = "codi_boot"
+path = "src/main.rs"
 
 [dependencies]
 cortex-m = "0.7.7"
 cortex-m-rt = "0.7.3"
 panic-abort = "0.3.2"
 panic-halt = "0.2.0"
-core2 = { version = "*", default-features = false }
+core2 = { version = "0.4", default-features = false }
+thiserror-no-std = "2.0.2"
+anyhow = { version = "1.0.72", default-features = false }
 
 [dependencies.stm32l4xx-hal]
 git = "https://github.com/stm32-rs/stm32l4xx-hal"
@@ -29,8 +32,6 @@ branch = "main"
 [dependencies.codi_protocol_common]
 git = "https://github.com/Cosmo-CoDiOS/codi_protocols"
 branch = "main"
-features = ["stm32"]
-default-features = false
 
 [profile.dev]
 opt-level = 's'
