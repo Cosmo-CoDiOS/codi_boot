@@ -41,7 +41,7 @@ jobs:
       - name: Strip the CoDi bootloader if the build is a release
         run: cargo strip --release --bin codi_bootload 
       - name: Publish release artifacts
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
             files: /home/runner/work/codi_bootload/target/thumbv7em-none-eabihf/release/codi_bootload
         env:
